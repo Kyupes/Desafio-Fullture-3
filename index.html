@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+        src="https://kit.fontawesome.com/e7ebc2fc39.js"
+        crossorigin="anonymous"
+    ></script>
+    <script src="./main.js"></script>
+    <script>
+      function login() {
+        const user = document.getElementById("user").value;
+        const senha = document.getElementById("senha").value;
+        const isHuman = document.getElementById("ehumano").checked;
+        const usuarioNoLocalStorage = localStorage.getItem(user);
+        if (isHuman) {
+          if (usuarioNoLocalStorage !== null) {
+            console.log(usuarioNoLocalStorage);
+            let infoUsuario = JSON.parse(usuarioNoLocalStorage).info;
+
+            if (infoUsuario.senha === senha) {
+              alert("login efetuado com sucesso");
+              window.location.href = "tarefas.html";
+            } else {
+              alert("senha incorreta");
+            }
+          } else {
+            alert("usuário nao existe");
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>LOGIN</h1>
+    <input id="user" type="text" placeholder="username" /> <br />
+    <input id="senha" type="password" placeholder="password" /><br />
+
+    você é um humano?
+    <input type="checkbox" id="ehumano" />
+    <button onclick="login()">login</button>
+    <button onclick="registrar()">registrar</button>
+  </body>
+</html>

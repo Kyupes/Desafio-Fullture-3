@@ -1,0 +1,101 @@
+1 - Adicionar tarefas (feito)
+2 - Remover um tarefa 
+3 - Terminar tarefa (feito)
+4 - Mudar estilos ao terminar a tarefa (adicionar classes css usando javascript pra cada tarefa finalizada) .finalizada
+5 - persistir dados no navegador, usando cookies ou local storage
+6 - Filtrar os dados da tela e modificá-los de acordo com a seleção
+7 - criar um array de objetos que irá representar cada tarefa (feito)
+8 - Criar função que irá atualizar a tela cada vez que o array de tarefas mudar, ou o filtro mudar (FEITO)
+
+ciclo de vida dos dados:
+
+clicou no adicionar:
+    1 - adicionar um novo objeto no array que representa as tarefas (FEITO)
+    2 - espelhar corretamente essa informação no local storage (armazenamento do navegador) pra ela ficar gravada permanentemente
+    3 - chamar função que atualiza o DOM pra ela mostrar corretamente as novas tarefas (FEITO)
+    
+selecionou uma opção do filtro:
+    1 - pegar o valor do select (done, all ou pending)
+    2 - SE o valor for all, o arrayTarefas será exibido
+    3 - Se o valor for pending, ele vai fazer o loop no array de tarefas
+    
+modificar status da tarefa:
+    1 - buscar quem é a tarefa no meu array
+    2 - pegar o id da minha tarefa e MODIFICAR no array somente aquele objeto com aquele ID
+    3 - gravar uma cópia do meu array no localStorage novamente (substituir com meu novo array modificado)
+    3 - chamar função que atualiza o DOM para espelhar as novas modificações
+
+
+excluir tarefa:
+    1 - buscar quem é a tarefa no meu array
+    2 - pegar o id da minha tarefa e EXCLUIR do array somente aquele objeto com aquele ID
+    3 - gravar uma cópia do meu array no localStorage novamente (substituir com meu novo array modificado)
+    3 - chamar função que atualiza o DOM para espelhar as novas modificações
+
+
+
+    * Quando a aplicação é aberta, da onde deve pegar as tarefas?
+     Primeiro - buscar no localstorage (no início da aplicação) ( FIRST SOURCE OF TRUTH)
+        se o localstorage tiver tarefas >>> botar essas tarefas no arrayTarefas
+        chamar a função atualizarDom com o arrayTarefas (agora atualizado)
+     Após esse tempo - buscar sempre as informações no nosso array na memória
+
+
+Estrutura de dados:
+const arrayDeTarefas = [
+    {
+        id: "1"
+        name: "tarefa1",
+        status: "pending", // pending || done
+    },
+     {
+        id: "2"
+        name: "tarefa2",
+        status: "pending", // pending || done
+    },
+    {
+        id: "3"
+        name: "tarefa3",
+        status: "done", // pending || done
+    },
+]
+
+
+const tarefasFiltradas = [
+    {
+        id: "1"
+        name: "tarefa1",
+        status: "pending", // pending || done
+    },
+     {
+        id: "2"
+        name: "tarefa2",
+        status: "pending", // pending || done
+    },
+]
+
+
+
+localstorage:
+    chave(username)    valor (conter tarefas e informações de user)
+  chave:  "hmassareli"         
+   
+   
+  valor:  "{
+                tarefas: 
+                    [
+                        {
+                            nome: "tarefa1",
+                            status: "pending",
+                            id: "123"}, {
+                            nome: "tarefa1",
+                            status: "pending",
+                            id: "123"
+                        }
+                    ],
+                'info': {
+                        password: "senhaFacil"
+                }
+            }"
+
+
